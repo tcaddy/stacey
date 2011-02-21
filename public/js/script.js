@@ -1,4 +1,4 @@
-$(function() {
+(function ($) {
   var image = $('.image');
   
   // don't init gallery if it consists of a single photo
@@ -17,4 +17,4 @@ $(function() {
     // show project navigation
     $("p#project-count").show();
   }
-});
+})(jQuery);
