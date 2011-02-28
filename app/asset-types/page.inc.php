@@ -35,12 +35,15 @@ Class Page {
 
     # post-parse JSON
     if (strtolower($this->template_type) == 'json') {
-      # minfy it
+      # minify it
       $data = json_minify($data);
       # strip any trailing commas
       # (run it twice to get partial matches)
       $data = preg_replace('/([}\]"]),([}\]])/', '$1$2', $data);
       $data = preg_replace('/([}\]"]),([}\]])/', '$1$2', $data);
+    } else if (strtolower($this->template_type) == 'haml') {
+      # parse haml
+      $data = parse_haml($this->template_file, $data);
     }
 
     return $data;
