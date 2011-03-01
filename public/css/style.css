@@ -92,8 +92,8 @@ html { overflow-y: scroll; }
 /* Accessible focus treatment: people.opera.com/patrickl/experiments/keyboard/test */
 a:hover, a:active { outline: none; }
 
-a, a:active, a:visited { color: #7DDA69; }
-a:hover { color: #6EC15C; }
+a, a:active, a:visited { color: #6EC15C; }
+a:hover { color: #7DDA69; }
 
 
 ul, ol { margin-left: 2em; }
@@ -166,31 +166,127 @@ button {  width: auto; overflow: visible; }
  * Author:
  */
 
+ /*	Less Framework 4
+ 	http://lessframework.com
+ 	by Joni Korpi
+ 	License: http://creativecommons.org/licenses/MIT/	*/
 
-nav ul, nav li { margin: 0; }
-small { font-size: 85%; }
-strong, th { font-weight: bold; }
-td, td img { vertical-align: top; }
-sub { vertical-align: sub; font-size: smaller; }
-sup { vertical-align: super; font-size: smaller; }
-pre {  padding: 15px;  white-space: pre;  white-space: pre-wrap;  white-space: pre-line;  word-wrap: break-word; }
-textarea { overflow: auto; }*/
+ /*		Default Layout: 992px.
+ 		Gutters: 24px.
+ 		Outer margins: 48px.
+ 		Leftover space for scrollbars @1024px: 32px.
+ -------------------------------------------------------------------------------
+ cols    1     2      3      4      5      6      7      8      9      10
+ px      68    160    252    344    436    528    620    712    804    896    */
 
-/* Colours */
+ body {
+ 	width: 896px;
+ 	padding: 72px 48px 84px;
+ 	background: rgb(232,232,232);
+ 	color: rgb(60,60,60);
+ 	-webkit-text-size-adjust: 100%; /* Stops Mobile Safari from auto-adjusting font-sizes */
+ 	margin: 0 auto;
+ }
 
-body, a { color: #222; }
-em, em a, strong, p.date, div#project-navigation p { color: #999; }
-a {
-  border-bottom: 1px solid #e2e2e2;
-  text-decoration: none;
-}
+ .col {
+   float: left;
+   margin: 0px 24px;
+   padding: 0px;
+ }
+
+ .col .col { margin: 0px; }
+
+ .one { width: 68px; }
+ .two { width: 160px; }
+ .three { width: 252; }
+ .four { width: 344px; }
+ .five { width: 436px; }
+ .six { width: 528px; }
+ /*.seven { width: 620px; }*/
+ .eight { width: 712px; }
+ .nine { width: 804px; }
+ .ten { width: 896px; }
+
+
+ /*		Tablet Layout: 768px.
+ 		Gutters: 24px.
+ 		Outer margins: 28px.
+ 		Inherits styles from: Default Layout.
+ -----------------------------------------------------------------
+ cols    1     2      3      4      5      6      7      8
+ px      68    160    252    344    436    528    620    712    */
+
+ @media only screen and (min-width: 768px) and (max-width: 991px) {
+
+ 	body {
+ 		width: 712px;
+ 		padding: 48px 28px 60px;
+ 	}
+ }
+
+
+
+ /*		Mobile Layout: 320px.
+ 		Gutters: 24px.
+ 		Outer margins: 34px.
+ 		Inherits styles from: Default Layout.
+ ---------------------------------------------
+ cols    1     2      3
+ px      68    160    252    */
+
+ @media only screen and (max-width: 767px) {
+
+ 	body {
+ 		width: 252px;
+ 		padding: 48px 34px 60px;
+ 	}
+
+ }
+
+
+
+ /*		Wide Mobile Layout: 480px.
+ 		Gutters: 24px.
+ 		Outer margins: 22px.
+ 		Inherits styles from: Default Layout, Mobile Layout.
+ ------------------------------------------------------------
+ cols    1     2      3      4      5
+ px      68    160    252    344    436    */
+
+ @media only screen and (min-width: 480px) and (max-width: 767px) {
+
+ 	body {
+ 		width: 436px;
+ 		padding: 36px 22px 48px;
+ 	}
+
+ }
+
+
+ /*	Retina media query.
+ 	Overrides styles for devices with a
+ 	device-pixel-ratio of 2+, such as iPhone 4.
+ -----------------------------------------------    */
+
+ @media
+ 	only screen and (-webkit-min-device-pixel-ratio: 2),
+ 	only screen and (min-device-pixel-ratio: 2) {
+
+ 	body {
+
+ 	}
+
+ }
+
+
+
 
 /* Typography */
 
 html, body {
   font-family: "Courier", monospace, serif;
-  font-size: 13px;
-  line-height: 1.4;
+  font-size: 14px;
+  line-height: 140%;
   text-align: left;
 }
 
@@ -231,15 +327,31 @@ p#gallery-count span {
   letter-spacing: 0.08em;
 }
 
+/* Colours */
+
+
+em,
+em a,
+strong,
+p.date,
+#project-navigation p {
+  color: #999;
+}
+
+a {
+  border-bottom: 1px solid #e2e2e2;
+  text-decoration: none;
+}
+
 /* Layout */
 
 body {
-  height: 100%;
-  width: 970px;
-  min-height: 100%;
-  height: auto !important;
-  height: 100%;
-  margin: 10px auto -4em;
+ /* height: 100%;
+   width: 970px;
+   min-height: 100%;
+   height: auto !important;
+   height: 100%;
+   margin: 10px auto -4em;*/
 }
 
 header {
@@ -254,26 +366,8 @@ header h1 {
 
 }
 
-.col {
-  float: left;
-  margin: 0px 0px 0px 10px;
-  padding: 0px;
-}
 
-.col .col { margin: 0px; }
 
-.one { width: 60px; }
-.two { width: 150px; }
-.three { width: 230px; }
-.four { width: 310px; }
-.five { width: 390px; }
-.six { width: 470px; }
-.seven { width: 550px; }
-.eight { width: 630px; }
-.nine { width: 710px; }
-.ten { width: 790px; }
-.eleven { width: 870px; }
-.twelve { width: 950px; }
 
 p { margin: 0px 0px 5px; }
 
@@ -339,7 +433,9 @@ footer {
 
 .date {
   text-align: right;
-  padding: 14px 20px 0px 0px;
+  padding: 1px 12px 0px 0px;
+  width: 135px;
+  height: 45px;
 }
 
 .description p {
@@ -425,7 +521,6 @@ p#gallery-count span {
 
 
 
-
 /**
  * Non-semantic helper classes: please define your styles before this section.
  */
@@ -456,30 +551,6 @@ p#gallery-count span {
 
 
 
-/**
- * Media queries for responsive design.
- *
- * These follow after primary styles so they will successfully override.
- */
-
-@media all and (orientation:portrait) {
-  /* Style adjustments for portrait mode goes here */
-
-}
-
-@media all and (orientation:landscape) {
-  /* Style adjustments for landscape mode goes here */
-
-}
-
-/* Grade-A Mobile Browsers (Opera Mobile, Mobile Safari, Android Chrome)
-   consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
-@media screen and (max-device-width: 480px) {
-
-
-  /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you: j.mp/textsizeadjust */
-  /* html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
-}
 
 
 /**
