@@ -33,6 +33,9 @@ Class Page {
   function parse_template() {
     $data = TemplateParser::parse($this->data, file_get_contents($this->template_file));
 
+    var_dump($this);
+    exit();
+
     # post-parse JSON
     if (strtolower($this->template_type) == 'json') {
       # minify it
@@ -44,6 +47,9 @@ Class Page {
     } else if (strtolower($this->template_type) == 'haml') {
       # parse haml
       $data = parse_haml($this->template_file);
+    } else if (strtolower($this->template_type) == 'sass') {
+      # parse sass
+      // $data = parse_sass($this->template_file);
     }
 
     return $data;

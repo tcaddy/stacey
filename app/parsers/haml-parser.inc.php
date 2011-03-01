@@ -1,11 +1,10 @@
 <?php
-require_once('haml/lib/haml.php');
+require_once('PHamlP/haml/HamlParser.php');
 
 function parse_haml($input)
 {
-  $haml = new Haml();
-  $haml_code = file_get_contents($input);
-  $html_code = $haml->parse($haml_code);
+  $haml = new HamlParser(array('style'=>'nested', 'ugly'=>false));
+  $html = $haml->parse($input);
 
-   echo $html_code;
+  echo $html;
 }
