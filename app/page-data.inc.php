@@ -258,5 +258,3 @@ Class PageData {
   }
 
 }
-
-?>

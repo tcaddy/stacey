@@ -20,7 +20,7 @@ Class Cache {
     $this->cachefile = './app/_cache/'.$this->base64_url($file_path);
     # collect an md5 of all files
     $this->hash = $this->create_hash();
-    # determine our file type so we know how (and if) to comment 
+    # determine our file type so we know how (and if) to comment
     $this->filetype = $this->set_filetype($template_file);
     $this->comment_tags = $this->set_comment_tags();
   }
@@ -83,7 +83,7 @@ Class Cache {
   function set_comment_tags() {
     if (in_array($this->filetype, $this->filetype_comment_tags)) {
       return $this->filetype_comment_tags[$this->filetype];
-    } 
+    }
     else return $this->filetype_comment_tags['default'];
   }
 
@@ -92,4 +92,3 @@ Class Cache {
   }
 
 }
-?>

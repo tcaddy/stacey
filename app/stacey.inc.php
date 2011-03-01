@@ -7,13 +7,17 @@ Class Stacey {
   var $route;
 
   function __construct($get) {
-    # sometimes when PHP release a new version, they do silly things - this function is here to fix them
+    # sometimes when PHP release a new version, they do silly things - this
+    # function is here to fix them
     $this->php_fixes();
-    # it's easier to handle some redirection through php rather than relying on a more complex .htaccess file to do all the work
+
+    # it's easier to handle some redirection through php rather than relying on
+    # a more complex .htaccess file to do all the work
     if($this->handle_redirects()) return;
 
     # strip any leading or trailing slashes from the passed url
     $key = preg_replace(array('/\/$/', '/^\//'), '', key($get));
+
     # store file path for this current page
     $this->route = isset($key) ? $key : 'index';
     $file_path = Helpers::url_to_file_path($this->route);
@@ -21,6 +25,7 @@ Class Stacey {
     try {
       # create and render the current page
       $this->create_page($file_path);
+
     } catch(Exception $e) {
       if($e->getMessage() == "404") {
         # return 404 headers
@@ -41,6 +46,13 @@ Class Stacey {
     }
   }
 
+  function php_fixes() {
+    # in PHP/5.3.0 they added a requisite for setting a default timezone, this
+    # should be handled via the php.ini, but as we cannot rely on this, we have
+    # to set a default timezone ourselves
+    if (function_exists('date_default_timezone_set')) date_default_timezone_set('Australia/Melbourne');
+  }
+
   function handle_redirects() {
     # rewrite any calls to /index or /app back to /
     if(preg_match('/^\/?(index|app)\/?$/', $_SERVER['REQUEST_URI'])) {
@@ -57,9 +69,27 @@ Class Stacey {
     return false;
   }
 
-  function php_fixes() {
-    # in PHP/5.3.0 they added a requisite for setting a default timezone, this should be handled via the php.ini, but as we cannot rely on this, we have to set a default timezone ourselves
-    if(function_exists('date_default_timezone_set')) date_default_timezone_set('Australia/Melbourne');
+  function create_page($file_path) {
+    # return a 404 if a matching folder doesn't exist
+    if(!file_exists($file_path)) throw new Exception('404');
+
+    # register global for the path to the page which is currently being viewed
+    global $current_page_file_path;
+    $current_page_file_path = $file_path;
+
+    # register global for the template for the page which is currently being viewed
+    global $current_page_template_file;
+    $template_name = Page::template_name($file_path);
+    $current_page_template_file = Page::template_file($template_name);
+
+    # error out if template file doesn't exist (or glob returns an error)
+    if(empty($template_name)) throw new Exception('404');
+
+    if(!$current_page_template_file) {
+      throw new Exception('A template named \''.$template_name.'\' could not be found in the \'/templates\' folder');
+    }
+    # render page
+    $this->render($file_path, $current_page_template_file);
   }
 
   function set_content_type($template_file) {
@@ -129,29 +159,4 @@ Class Stacey {
     }
   }
 
-  function create_page($file_path) {
-    # return a 404 if a matching folder doesn't exist
-    if(!file_exists($file_path)) throw new Exception('404');
-
-    # register global for the path to the page which is currently being viewed
-    global $current_page_file_path;
-    $current_page_file_path = $file_path;
-
-    # register global for the template for the page which is currently being viewed
-    global $current_page_template_file;
-    $template_name = Page::template_name($file_path);
-    $current_page_template_file = Page::template_file($template_name);
-
-    # error out if template file doesn't exist (or glob returns an error)
-    if(empty($template_name)) throw new Exception('404');
-
-    if(!$current_page_template_file) {
-      throw new Exception('A template named \''.$template_name.'\' could not be found in the \'/templates\' folder');
-    }
-    # render page
-    $this->render($file_path, $current_page_template_file);
-  }
-
 }
-
-?>
