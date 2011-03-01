@@ -43,7 +43,7 @@ Class Page {
       $data = preg_replace('/([}\]"]),([}\]])/', '$1$2', $data);
     } else if (strtolower($this->template_type) == 'haml') {
       # parse haml
-      $data = parse_haml($this->template_file, $data);
+      $data = parse_haml($this->template_file);
     }
 
     return $data;
