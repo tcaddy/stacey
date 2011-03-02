@@ -9,9 +9,9 @@
   </url>
   end
   foreach $root do
-    :sitemap-url
+    ::sitemap-url
     if $children do
-      :sitemap-children
+      ::sitemap-children
     endif
   endforeach
 </urlset>
