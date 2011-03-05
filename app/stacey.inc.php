@@ -7,9 +7,11 @@ Class Stacey {
   var $route;
 
   function __construct($get) {
-    # sometimes when PHP release a new version, they do silly things - this function is here to fix them
+    # sometimes when PHP release a new version, they do silly things - this
+    # function is here to fix them
     $this->php_fixes();
-    # it's easier to handle some redirection through php rather than relying on a more complex .htaccess file to do all the work
+    # it's easier to handle some redirection through php rather than relying
+    # on a more complex .htaccess file to do all the work
     if($this->handle_redirects()) return;
 
     # strip any leading or trailing slashes from the passed url
@@ -43,13 +45,13 @@ Class Stacey {
 
   function handle_redirects() {
     # rewrite any calls to /index or /app back to /
-    if(preg_match('/^\/?(index|app)\/?$/', $_SERVER['REQUEST_URI'])) {
+    if (preg_match('/^\/?(index|app)\/?$/', $_SERVER['REQUEST_URI'])) {
       header('HTTP/1.1 301 Moved Permanently');
       header('Location: ../');
       return true;
     }
     # add trailing slash if required
-    if(!preg_match('/\/$/', $_SERVER['REQUEST_URI']) && !preg_match('/\./', $_SERVER['REQUEST_URI'])) {
+    if (!preg_match('/\/$/', $_SERVER['REQUEST_URI']) && !preg_match('/\./', $_SERVER['REQUEST_URI'])) {
       header('HTTP/1.1 301 Moved Permanently');
       header('Location:'.$_SERVER['REQUEST_URI'].'/');
       return true;
@@ -58,8 +60,12 @@ Class Stacey {
   }
 
   function php_fixes() {
-    # in PHP/5.3.0 they added a requisite for setting a default timezone, this should be handled via the php.ini, but as we cannot rely on this, we have to set a default timezone ourselves
-    if(function_exists('date_default_timezone_set')) date_default_timezone_set('Australia/Melbourne');
+    # in PHP/5.3.0 they added a requisite for setting a default timezone, this
+    # should be handled via the php.ini, but as we cannot rely on this, we have
+    # to set a default timezone ourselves
+    if(function_exists('date_default_timezone_set')) {
+      date_default_timezone_set('Australia/Melbourne');
+    }
   }
 
   function set_content_type($template_file) {
