@@ -27,7 +27,10 @@ See <http://staceyapp.com> for more detailed usage information.
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
 
 PHP Markdown (c) Michel Fortin (see [1] for license details)
+
 JSON.minify  (c) Kyle Simpson (see [2] for license details).
 
+
 [1] `/app/parsers/markdown-parser.inc.php`
-[2]'app/parsers/json-minifier.inc.php'
+
+[2] `app/parsers/json-minifier.inc.php`
