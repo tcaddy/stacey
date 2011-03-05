@@ -10,6 +10,8 @@
 		</classpath>
 	</taskdef>
 
+    <!-- load shell environment -->
+    <property environment="ENV" />
 
 	<!-- load property files -->
 	<property file="build/config/project.properties"/>
@@ -403,7 +405,7 @@
 		<var name="excluded-files" value="${file.default.exclude}, ${file.exclude}"/>
 
 		<copy todir="./${dir.publish}">
-			<fileset dir="./" excludes="${excluded-files}"/>
+			<fileset dir="${dir.source}/" excludes="${excluded-files}"/>
 		</copy>
 	</target>
 
@@ -546,13 +548,23 @@
 		<replaceregexp match='\?v=\d+">' replace='">' flags="">
 			<fileset dir="./${dir.publish}" includes="${page-files}"/>
 		</replaceregexp>
+
+		<echo>remove favicon reference if it is pointing to the root</echo>
+		<replace token="&lt;link rel=&quot;shortcut icon&quot; href=&quot;/favicon.ico&quot;>" value="">
+			<fileset dir="./${dir.publish}" includes="${page-files}"/>
+		</replace>
+		<!-- we maintain the apple-touch-icon reference for Android 2.2   www.ravelrumba.com/blog/android-apple-touch-icon
+		<replace token="&lt;link rel=&quot;apple-touch-icon&quot; href=&quot;/apple-touch-icon.png&quot;>" value="">
+			<fileset dir="./${dir.publish}" includes="${page-files}"/>
+		</replace>
+		-->
 	</target>
 
 
 	<target name="-html" depends="-load-build-info" description="(PRIVATE) Very basic clean up of the HTML">
 		<echo message="Clean up the html..."/>
 		<!-- style.css replacement handled as a replacetoken above -->
-		<replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end concatenated and minified scripts--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
+		<replaceregexp match="&lt;!-- scripts concatenated [\d\w\s\W]*?!-- end ((scripts)|(concatenated and minified scripts))--&gt;" replace="&lt;script src='${dir.js}/scripts-${build.number}.min.js\'&gt;&lt;/script&gt;" flags="m">
 			<fileset dir="./${dir.publish}" includes="${page-files}"/>
 		</replaceregexp>
 		<!--[! use comments like this one to avoid having them get minified -->
@@ -643,12 +655,30 @@
 		<echo message="Optimizing images"/>
 
 		<!-- osfamily=unix is actually true on OS X as well -->
-		<apply executable="optipng" osfamily="unix">
-			<arg value="-o7"/>
-			<fileset dir="./${dir.publish}/">
-				<include name="**/*.png"/>
-			</fileset>
-		</apply>
+        <!-- On *nix's and OS X, check for optipng and give a helpful message if it's not installed -->
+        <if>
+            <and>
+                <os family="unix" />
+                <available file="optipng" filepath="${ENV.PATH}" />
+            </and>
+            <then>
+                <apply executable="optipng" osfamily="unix">
+                    <arg value="-o7"/>
+                    <fileset dir="./${dir.publish}/">
+                        <include name="**/*.png"/>
+                    </fileset>
+                </apply>
+            </then>
+            <elseif>
+                <os family="unix" />
+                <then>
+                    <echo message="*** optipng NOT INSTALLED. SKIPPING OPTIMIZATION OF PNGs." />
+                    <echo message="*** Install optipng to enable png optimization." />
+                    <echo message="*** For instructions see 'Dependencies' at: http://html5boilerplate.com/docs/#Build-script.md" />
+                </then>
+            </elseif>
+        </if>
+
 		<apply executable="tools/optipng-0.6.4-exe/optipng.exe" osfamily="windows">
 			<arg value="-o7"/>
 			<fileset dir="./${dir.publish}/">
@@ -669,17 +699,36 @@
 				<var name="strip-meta-tags" value="all"/>
 			</else>
 		</if>
-		<apply executable="jpegtran" osfamily="unix">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
-			<arg value="-copy"/>
-			<arg value="${strip-meta-tags}"/>
-			<srcfile/>
-			<targetfile/>
-			<!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
-			<mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
-		</apply>
+
+        <!-- On *nix's and OS X, check for jpegtran and give a helpful message if it's not installed -->
+        <if>
+            <and>
+                <os family="unix" />
+                <available file="jpegtran" filepath="${ENV.PATH}" />
+            </and>
+            <then>
+                <apply executable="jpegtran" osfamily="unix">
+                    <fileset dir="./${dir.images}" includes="*.jpg"/>
+                    <arg value="-copy"/>
+                    <arg value="${strip-meta-tags}"/>
+                    <srcfile/>
+                    <targetfile/>
+                    <!-- you may want to flag optimized images. If so, do it here. Otherwise change this to type="identity" -->
+                    <mapper type="glob" from="*.jpg" to="../${dir.publish}/${dir.images}/*.jpg"/>
+                </apply>
+            </then>
+            <elseif>
+                <os family="unix" />
+                <then>
+                    <echo message="*** jpegtran NOT INSTALLED. SKIPPING OPTIMIZATION OF JPEGs." />
+                    <echo message="*** Install jpegtran to enable jpeg optimization." />
+                    <echo message="*** For instructions see 'Dependencies' at: http://html5boilerplate.com/docs/#Build-script.md" />
+                </then>
+            </elseif>
+        </if>
+
 		<apply executable="tools/jpegtran.exe" osfamily="windows">
-			<fileset dir="./${dir.publish}/${dir.images}/" includes="*.jpg"/>
+			<fileset dir="./${dir.images}" includes="*.jpg"/>
 			<arg value="-copy"/>
 			<arg value="${strip-meta-tags}"/>
 			<srcfile/>
