@@ -192,6 +192,7 @@ html, body {
   font-size: 13px;
   line-height: 1.4;
   text-align: left;
+  height: 100%;
 }
 
 ul li, p, em, .description {
@@ -219,8 +220,8 @@ h2 {
 }
 
 p.date {
-  font-size: 11px;
-  letter-spacing:0.03em;
+  font-size: .85em;
+  letter-spacing: 0.03em;
 }
 
 p#project-count, p#gallery-count {
@@ -234,20 +235,19 @@ p#gallery-count span {
 /* Layout */
 
 body {
-  height: 100%;
-  width: 970px;
+  width: 960px;
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin: 10px auto -4em;
+  margin: 0 auto -50px;
 }
 
 header {
-  height: 80px;
+  height: 90px;
 }
 
 header h1 {
-  margin:0 20px 0 0 !important;
+  margin:0 10px 0 0 !important;
 }
 
 #profession {
@@ -321,7 +321,8 @@ nav ol {
   padding: 0px 0px 8px;
 }
 .push {
-  clear: both;
+
+  height: 50px;
 }
 
 #content {
@@ -331,7 +332,7 @@ nav ol {
 footer {
   clear:both;
   display:inline;
-  height:4em;
+  height:50px;
   line-height:1.4;
   text-align:center;
   width:99%;
