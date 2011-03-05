@@ -10,7 +10,7 @@ If you look in the `/content` and `/templates` folders, you should get the gener
 
 Copy to server, `chmod 777 app/_cache`.
 
-If you want clean urls, `mv htaccess .htaccess`
+If you want clean urls, `mv htaccess.txt .htaccess`
 
 ## Templates
 
@@ -25,5 +25,9 @@ See <http://staceyapp.com> for more detailed usage information.
 ## Copyright/License
 
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
-Except PHP Markdown Extra which is (c) Michel Fortin (see `/app/parsers/markdown-parser.inc.php` for details) and
-JSON.minify which is (c) Kyle Simpson (see 'app/parsers/json-minifier.inc.php' for details).
+
+PHP Markdown (c) Michel Fortin (see [1] for license details)
+JSON.minify  (c) Kyle Simpson (see [2] for license details).
+
+[1] `/app/parsers/markdown-parser.inc.php`
+[2]'app/parsers/json-minifier.inc.php'
