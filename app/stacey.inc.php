@@ -6,6 +6,41 @@ Class Stacey {
 
   var $route;
 
+  function __construct($get) {
+    # sometimes when PHP release a new version, they do silly things - this function is here to fix them
+    $this->php_fixes();
+    # it's easier to handle some redirection through php rather than relying on a more complex .htaccess file to do all the work
+    if($this->handle_redirects()) return;
+
+    # strip any leading or trailing slashes from the passed url
+    $key = preg_replace(array('/\/$/', '/^\//'), '', key($get));
+    # store file path for this current page
+    $this->route = isset($key) ? $key : 'index';
+    $file_path = Helpers::url_to_file_path($this->route);
+
+    try {
+      # create and render the current page
+      $this->create_page($file_path);
+    } catch(Exception $e) {
+      if($e->getMessage() == "404") {
+        # return 404 headers
+        header('HTTP/1.0 404 Not Found');
+        if(file_exists('./content/404')) {
+          $this->create_page('./content/404', '404');
+        }
+        else if(file_exists('./public/404.html')) {
+          echo file_get_contents('./public/404.html');
+        }
+        else {
+          echo '<h1>404</h1><h2>Page could not be found.</h2><p>Unfortunately, the page you were looking for does not exist here.</p>';
+        }
+
+      } else {
+        echo '<h3>'.$e->getMessage().'</h3>';
+      }
+    }
+  }
+
   function handle_redirects() {
     # rewrite any calls to /index or /app back to /
     if(preg_match('/^\/?(index|app)\/?$/', $_SERVER['REQUEST_URI'])) {
@@ -115,41 +150,6 @@ Class Stacey {
     }
     # render page
     $this->render($file_path, $current_page_template_file);
-  }
-
-  function __construct($get) {
-    # sometimes when PHP release a new version, they do silly things - this function is here to fix them
-    $this->php_fixes();
-    # it's easier to handle some redirection through php rather than relying on a more complex .htaccess file to do all the work
-    if($this->handle_redirects()) return;
-
-    # strip any leading or trailing slashes from the passed url
-    $key = preg_replace(array('/\/$/', '/^\//'), '', key($get));
-    # store file path for this current page
-    $this->route = isset($key) ? $key : 'index';
-    $file_path = Helpers::url_to_file_path($this->route);
-
-    try {
-      # create and render the current page
-      $this->create_page($file_path);
-    } catch(Exception $e) {
-      if($e->getMessage() == "404") {
-        # return 404 headers
-        header('HTTP/1.0 404 Not Found');
-        if(file_exists('./content/404')) {
-          $this->create_page('./content/404', '404');
-        }
-        else if(file_exists('./public/404.html')) {
-          echo file_get_contents('./public/404.html');
-        }
-        else {
-          echo '<h1>404</h1><h2>Page could not be found.</h2><p>Unfortunately, the page you were looking for does not exist here.</p>';
-        }
-
-      } else {
-        echo '<h3>'.$e->getMessage().'</h3>';
-      }
-    }
   }
 
 }
