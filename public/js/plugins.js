@@ -6,7 +6,7 @@ Gallery = {
   maxCount: null,
   nextButton: null,
   prevButoon: null,
-  init: function(imageHolder, imageWrapperWidth, imageCountHolder, nextButton, prevButton, descriptionHolder, descriptionWidth) {
+  init: function (imageHolder, imageWrapperWidth, imageCountHolder, nextButton, prevButton, descriptionHolder, descriptionWidth) {
     // set custom variables
     this.imageHolder = imageHolder;
     this.imageWrapperWidth = imageWrapperWidth;
@@ -18,7 +18,7 @@ Gallery = {
     this.descriptionWidth = descriptionWidth;
     
     // check if a specific image has been specified in the URL
-    if(document.URL.match(/#[0-9]+/)) {
+    if (document.URL.match(/#[0-9]+/)) {
       this.gotoImage(new Number(new String(document.URL.match(/#[0-9]+/)).replace("#", "")) - 1);
     } else {
       // write maxCount
@@ -27,28 +27,28 @@ Gallery = {
     // 
     this.attachEvents();
   },
-  attachEvents: function() {
+  attachEvents: function () {
     // write next/prev functions
-    this.nextButton.click(function() {
+    this.nextButton.click(function () {
       Gallery.next();
       this.blur();
       return false;
     });
-    this.prevButton.click(function() {
+    this.prevButton.click(function () {
       Gallery.previous();
       this.blur();
       return false;
     });
   },
-  next: function() {
+  next: function () {
     // show next image
     this.gotoImage(this.currentImage + 1);
   },
-  previous: function() {
+  previous: function () {
     // show previous image
     this.gotoImage(this.currentImage - 1);
   },
-  updateCount: function(newCount) {
+  updateCount: function (newCount) {
     // set current image
     this.currentImage = newCount;
     // update current image display
@@ -56,7 +56,7 @@ Gallery = {
     // update url hash
     //window.location.hash = (newCount + 1);
   },
-  gotoImage: function(num) {
+  gotoImage: function (num) {
     // if not too high
     if(num >= this.maxCount) {
       num = 0;
@@ -68,7 +68,7 @@ Gallery = {
     // update count
     this.updateCount(num);
   },
-  animateContainers: function(num) {
+  animateContainers: function (num) {
     this.imageHolder.animate({
       marginLeft: (num * this.imageWrapperWidth) * -1 + "px"
     }, { duration: 600, queue: false });
