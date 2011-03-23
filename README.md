@@ -1,4 +1,4 @@
-# Stacey 2.2.2
+# Stacey 2.2.2 - HTML5Boilerplate Edition
 
 ## Overview
 Stacey takes content from `.txt` files, image files and implied directory structure and generates a website.
@@ -15,12 +15,13 @@ If you want clean urls, `mv htaccess.txt .htaccess`
 ## Templates
 
 There are an additional two sets of templates which can be found at:
+
 <http://github.com/kolber/stacey-template2> &
 <http://github.com/kolber/stacey-template3>
 
 ## Read More
 
-See <http://staceyapp.com> for more detailed usage information.
+See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed usage information.
 
 ## Copyright/License
 
