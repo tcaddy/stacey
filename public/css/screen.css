@@ -214,7 +214,7 @@ h1 strong {
 
 h2 {
   font-size: 26px;
-  margin: 0px;
+  margin: 0 0 20px 0;
   font-weight: normal;
   letter-spacing: 0.02em;
 }
@@ -237,7 +237,7 @@ p#gallery-count span {
 /* Layout */
 
 body {
-  width: 960px;
+  width: 1024px;
   min-height: 100%;
   height: auto !important;
   height: 100%;
@@ -245,7 +245,7 @@ body {
 }
 
 #container {
-  margin: 20px 0 0 0;
+  margin: 0 60px 0 48px;
 }
 
 header {
@@ -253,7 +253,7 @@ header {
 }
 
 header h1 {
-  margin:0 10px 0 0 !important;
+  margin:0 0px 0 0 !important;
 }
 
 /* ================ */
@@ -262,26 +262,24 @@ header h1 {
 
 .col {
   float: left;
-  margin: 0px 0px 0px 10px;
+  margin: 0;
   padding: 0px;
 }
 
 .col .col { margin: 0px; }
 
-.one { width: 60px; }
-.two { width: 150px; }
-.three { width: 230px; }
-.four { width: 310px; }
-.five { width: 390px; }
-.six { width: 470px; }
-.seven { width: 550px; }
-.eight { width: 630px; }
-.nine { width: 710px; }
-.ten { width: 790px; }
-.eleven { width: 870px; }
-.twelve { width: 950px; }
+.one { width: 68px; }
+.two { width: 160px; }
+.three { width: 252px; }
+.four { width: 344px; }
+.five { width: 436px; }
+.six { width: 528px; }
+.seven { width: 620px; }
+.eight { width: 712px; }
+.nine { width: 804px; }
+.ten { width: 896px; }
 
-.col hr {
+/*.col hr {
   display: block;
   clear: both;
   margin: 0px 0px 45px;
@@ -289,7 +287,7 @@ header h1 {
   height: 0px;
   overflow: hidden;
   visibility: hidden;
-}
+}*/
 
 p { margin: 0px 0px 5px; }
 
@@ -325,6 +323,7 @@ nav ol {
 
 #content {
   float:left;
+  min-height: 550px;
 }
 
 footer, .push {
