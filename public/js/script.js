@@ -1,3 +1,9 @@
+jQuery.ajaxSetup({
+  'beforeSend': function(xhr){
+    xhr.setRequestHeader("Accept", "text/javascript");
+  }
+});
+
 //mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID 
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
