@@ -55,7 +55,8 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
           T("#timeline td.status").hovercards();
         });
       }
-  });
+    });
+  }
   
   function after_load_or_ajax() {
     TC.setup_ajax_on_links();
