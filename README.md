@@ -35,6 +35,8 @@ There is also a sample Twitter content folder which will get your recent Tweets 
 
 User's without Javascript will get degraded content that is probably 'good enough' to let them find you on Twitter.
 
+This has been tested in Firefox 4 and Google Chrome 10 on Linux.  Expect to make some slight CSS / template adjustments to make all the browsers work correctly.
+
 ## Copyright/License
 
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
