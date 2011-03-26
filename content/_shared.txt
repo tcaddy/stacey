@@ -4,3 +4,8 @@ profession: Gräphic Designer
 -
 email: 
 <hi@yourdomain.com>
+-
+twitter: h5bp
+-
+twitter_api_key: YOUR_API_KEY
+-
