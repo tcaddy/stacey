@@ -1,3 +1,5 @@
+var TC = TC || {}; // my initials; namespace for my js code
+
 //mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID 
 var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
@@ -21,4 +23,33 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
     // show project navigation
     $("p#project-count").show();
   }
+  
+  $(function(){
+    TC.setup_twitter();
+  });
+  
+  TC.setup_twitter = function() {
+    TC.twitter.status_template = '<tr class="status"><td class="avatar"><img alt="{{screenName}}" src="{{image_url}}"/></td><td class="screen_name">@{{screenName}}</td><td class="status">{{text}}</td></tr>';
+    TC.twitter.status_simple_template = '<tr class="status"><td class="status">{{text}}<span class="timestamp">{{timestamp}}</span></td></tr>';
+
+    $("#timeline .busy:hidden").show();
+    twttr.anywhere(function (T) {
+      T.hovercards();
+      T("#follow-placeholder").followButton(TC.twitter.handle);
+      if($("#timeline").length>0) {
+        T.User.find(TC.twitter.handle).timeline().each(function(status) {
+          $("#timeline .busy:visible").hide();
+          $("#timeline").append(
+            Mustache.to_html(TC.twitter.status_simple_template, {
+              text: status.text,
+              timestamp: status.createdAt
+            })
+          );
+          $("#timeline .timestamp:last").prettyDate();
+          T("#timeline td.status").hovercards();
+        });
+      }
+    });
+  }
+  
 })(jQuery);
