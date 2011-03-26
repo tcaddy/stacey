@@ -75,7 +75,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
   }
 
   TC.hide_spinners = function() {
-    $("img[src$='"+spinner()+"']").hide();
+    $("img[src$='"+TC.spinner()+"']").hide();
   }
 
   TC.hide_underlines_on_links = function() {
