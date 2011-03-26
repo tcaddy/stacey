@@ -23,6 +23,18 @@ There are an additional two sets of templates which can be found at:
 
 See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed usage information.
 
+## twitter_anywhere branch of tcaddy fork
+
+This uses Twitter @Anywhere javascript library, which let's users stay on your site, while interacting with Twitter.
+
+You should edit content/_shared.txt and change the Twitter account name and API key.
+
+The left side navigation includes your Twitter username with hovercard.
+
+There is also a sample Twitter content folder which will get your recent Tweets and apply hovercard to all Twitter account names in those Tweets.
+
+User's without Javascript will get degraded content that is probably 'good enough' to let them find you on Twitter.
+
 ## Copyright/License
 
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
