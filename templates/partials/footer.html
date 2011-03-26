@@ -14,12 +14,14 @@
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
 <script>window.jQuery || document.write('<script src="@root_path/public/js/libs/jquery-1.5.1.min.js">\x3C/script>')</script>
 <script src="@root_path/public/js/libs/mustache.js"></script>
-
-
+<script src="@root_path/public/js/libs/underscore-min.js"></script>
+<script type="text/javascript">var UnderScore = _.noConflict(); </script>
 <!-- scripts concatenated and minified via ant build script-->
   <script src="@root_path/public/js/plugins.js"></script>
   <script type="text/javascript">
     var TC = TC || {}; // my initials; namespace for my js code
+    TC.stacey = TC.stacey || {};
+    TC.stacey.root_path = '@root_path';
     TC.twitter = {
       handle: '@'+'@twitter',
       api_key: '@twitter_api_key'
