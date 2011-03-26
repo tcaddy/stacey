@@ -1,0 +1,16 @@
+title: Twitter
+-
+content: 
+<table class="timeline" id="timeline">
+  <caption>
+    Recent Tweets from @@twitter
+    <span class="busy" style="display:none;">
+      <img src="@root_path/public/img/spinner_444.gif" />
+    </span>
+  </caption>
+</table>
+<noscript>
+  Visit <a href="http://www.twitter.com/@twitter" target="_blank">twitter.com/@twitter</a> to view @name's recent Tweets.
+</noscript>
+-
+do_twitter: true
