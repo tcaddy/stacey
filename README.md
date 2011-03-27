@@ -66,7 +66,7 @@ TODO:  AJAX links do not work for index.php or / path.
 
 ## twitter_and_ajax branch of tcaddy fork
 
-See a <a href="#">Demo</a> of AJAX version of template with Twitter @Anywhere integration.
+See a <a href="http://www.teddycaddy.com/stacey/twitter_and_ajax/" target="_blank">Demo</a> of AJAX version of template with Twitter @Anywhere integration.
 
 This is a merge of these two branches:
 
