@@ -27,15 +27,15 @@ See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed 
 
 Add AJAX to any link by adding: data-remote="true"
 
-Example:  <a href="@url" data-remote="true">Click Here</a>
+Example:  `<a href="@url" data-remote="true">Click Here</a>`
 
-AJAX requests will replace contents of <article id="content"></article>
+AJAX requests will replace contents of `<article id="content"></article>`
 
 100% compatible for users without Javascript.
 
 Templates have been changed:
 
-  *  all content before and after <article id="content"></article> has been abstracted to partials
+  *  all content before and after `<article id="content"></article>` has been abstracted to partials
   * Templates are rendered appropriately (AJAX or normal) based on value of a new variable called @is_xhr
 
 The app files have been modified slightly:
