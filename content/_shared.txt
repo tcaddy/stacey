@@ -1,11 +1,11 @@
-name: Ñame
+name: Teddy Caddy
 -
-profession: Gräphic Designer
+profession: Web Developer
 -
 email: 
-<hi@yourdomain.com>
+<info@teddycaddy.com>
 -
-twitter: StaceyApp
+twitter: TeddyCaddy
 -
 twitter_api_key: YOUR_API_KEY
 -
