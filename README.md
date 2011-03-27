@@ -25,6 +25,8 @@ See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed 
 
 ## twitter_anywhere branch of tcaddy fork
 
+See a <a href="http://www.teddycaddy.com/stacey/twitter_anywhere/?/twitter/" target="_blank">Demo</a> of Twitter @Anywhere integration.
+
 This uses Twitter @Anywhere javascript library, which let's users stay on your site, while interacting with Twitter.
 
 You should edit content/_shared.txt and change the Twitter account name and API key.
