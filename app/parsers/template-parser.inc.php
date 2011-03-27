@@ -143,8 +143,10 @@ Class TemplateParser {
     $pages = (isset($data[$template_parts[2]]) && is_array($data[$template_parts[2]]) && !empty($data[$template_parts[2]])) ? $data[$template_parts[2]] : false;
 
     # slice down the data array if required
-    if(is_array($pages) && $start_limit !== false) {
-      $pages = array_slice($pages, $start_limit, $end_limit);
+    if(isset($start_limit) && isset($end_limit)) {
+      if(is_array($pages) && $start_limit !== false) {
+        $pages = array_slice($pages, $start_limit, $end_limit);
+      }
     }
 
     # check for any nested matches
