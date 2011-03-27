@@ -25,7 +25,7 @@ See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed 
 
 ## ajaxification branch of tcaddy fork
 
-See a [[http://www.teddycaddy.com/stacey/ajaxification/][Demo]] of AJAX.
+See a [Demo](http://www.teddycaddy.com/stacey/ajaxification/) of AJAX.
 
 Add AJAX to any link by adding: data-remote="true"
 
