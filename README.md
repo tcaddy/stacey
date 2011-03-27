@@ -25,8 +25,7 @@ See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed 
 
 ## ajaxification branch of tcaddy fork
 
-See a [Demo](http://www.teddycaddy.com/stacey/ajaxification/){:target="_blank"}
- of AJAX.
+See a <a href="http://www.teddycaddy.com/stacey/ajaxification/" target="_blank">Demo</a> of AJAX.
 
 Add AJAX to any link by adding: data-remote="true"
 
