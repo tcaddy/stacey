@@ -23,6 +23,30 @@ There are an additional two sets of templates which can be found at:
 
 See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed usage information.
 
+## ajaxification branch of tcaddy fork
+
+Add AJAX to any link by adding: data-remote="true"
+
+Example:  <a href="@url" data-remote="true">Click Here</a>
+
+AJAX requests will replace contents of <article id="content"></article>
+
+100% compatible for users without Javascript.
+
+Templates have been changed:
+
+  *  all content before and after <article id="content"></article> has been abstracted to partials
+  * Templates are rendered appropriately (AJAX or normal) based on value of a new variable called @is_xhr
+
+The app files have been modified slightly:
+
+  *  make a variable called @is_xhr.  
+     * You can use this to repsond to AJAX / non-AJAX requests in your templates
+  *  Prevent 301 Redirects due to GET variables added to URL in AJAX requests
+  
+TODO:  AJAX links do not work for index.php or / path.
+
+
 ## Copyright/License
 
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
