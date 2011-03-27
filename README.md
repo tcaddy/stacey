@@ -37,6 +37,31 @@ User's without Javascript will get degraded content that is probably 'good enoug
 
 This has been tested in Firefox 4 and Google Chrome 10 on Linux.  Expect to make some slight CSS / template adjustments to make all the browsers work correctly.
 
+## ajaxification branch of tcaddy fork
+
+See a <a href="http://www.teddycaddy.com/stacey/ajaxification/" target="_blank">Demo</a> of AJAX.
+
+Add AJAX to any link by adding: data-remote="true"
+
+Example:  `<a href="@url" data-remote="true">Click Here</a>`
+
+AJAX requests will replace contents of `<article id="content"></article>`
+
+100% compatible for users without Javascript.
+
+Templates have been changed:
+
+  *  all content before and after `<article id="content"></article>` has been abstracted to partials
+  * Templates are rendered appropriately (AJAX or normal) based on value of a new variable called @is_xhr
+
+The app files have been modified slightly:
+
+  *  make a variable called @is_xhr.  
+     * You can use this to repsond to AJAX / non-AJAX requests in your templates
+  *  Prevent 301 Redirects due to GET variables added to URL in AJAX requests
+  
+TODO:  AJAX links do not work for index.php or / path.
+
 ## Copyright/License
 
 Copyright (c) 2009 Anthony Kolber. See `LICENSE` for details.
