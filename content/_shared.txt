@@ -7,6 +7,6 @@ email:
 -
 twitter: TeddyCaddy
 -
-twitter_api_key: YOUR_API_KEY
+twitter_api_key: zqYlg5Vt0fFkZjZhtWpYtg
 -
 gal_key: UA-22336496-1
