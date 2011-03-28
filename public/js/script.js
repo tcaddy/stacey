@@ -50,6 +50,7 @@ var TC = TC || {}; // my initials; namespace for my js code
   TC.setup_gal = function() {
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', TC.gal.key]);
+    _gaq.push(['_setDomainName', '.teddycaddy.com']);
     _gaq.push(['_trackPageview']);
 
     (function() {
