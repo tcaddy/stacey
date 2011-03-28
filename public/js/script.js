@@ -6,18 +6,12 @@ jQuery.ajaxSetup({
 
 var TC = TC || {}; // my initials; namespace for my js code
 
-//mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID 
-var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
-g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
-s.parentNode.insertBefore(g,s)}(document,'script'));
-
 (function ($) {
 
   $(function(){
     after_load_or_ajax();
     TC.setup_bbq();
-    // TC.setup_gal();
+     TC.setup_gal();
   });
   
   TC.setup_twitter = function() {
@@ -51,6 +45,14 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
     TC.hide_underlines_on_links();
     TC.hide_spinners();
     TC.setup_twitter();
+  }
+  
+  TC.setup_gal = function() {
+    //mathiasbynens.be/notes/async-analytics-snippet Change UA-XXXXX-X to be your site's ID 
+    var _gaq=[['_setAccount',TC.gal.key],['_trackPageview']];
+    (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+    g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+    s.parentNode.insertBefore(g,s)}(document,'script'));
   }
 
   TC.setup_gallery = function() {
