@@ -16,11 +16,13 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
 
   $(function(){
     after_load_or_ajax();
+    TC.setup_bbq();
     // TC.setup_gal();
   });
   
   function after_load_or_ajax() {
     TC.setup_ajax_on_links();
+    
     TC.setup_gallery();
     TC.hide_underlines_on_links();
     TC.hide_spinners();
@@ -93,6 +95,8 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
       e.stopImmediatePropagation();
       TC.add_spinner($(this));
       var data = {ajax:true};
+      var that = $(this);
+      TC.cache = TC.cache || {};
       if ( ($(this).parent("div.pagination")) && ($(this).parent("div.pagination").attr('data-remove-dom-id')) ) {
         data.dom_id = $(this).parent("div.pagination").attr('data-remove-dom-id');
       }
@@ -102,14 +106,66 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
         data: data,
         dataType: "html",
         success: function(data){
-          $("article#content").html(data);
+          $("article#content").html(data).addClass("bbq-content");
+          TC.cache[that.attr("href")] = $("article#content").clone();
         },
         type: 'GET',
         url: $(this).attr('href')
       });
-      
+      $.bbq.pushState({ url: $(this).attr('href') }); // Push this URL "state" onto the history hash.
       return false;  
     });
+  }
+  
+  TC.setup_bbq = function() {
+    // Be sure to bind to the "hashchange" event on document.ready, not
+    // before, or else it may fail in IE6/7. This limitation may be
+    // removed in a future revision.
+    
+    // Keep a mapping of url-to-container for caching purposes.
+    TC.cache = TC.cache || {'': $('.bbq-default')}; // If url is '' (no fragment), display this div's content.
+
+    // Bind a callback that executes when document.location.hash changes.
+    $(window).bind( "hashchange", function(e) {
+      // In jQuery 1.4, use e.getState( "url" );
+      var url = $.bbq.getState( "url" );
+
+      // In this example, whenever the event is triggered, iterate over
+      // all `a` elements, setting the class to "current" if the
+      // href matches (and removing it otherwise).
+      $("a").each(function(){
+        var href = $(this).attr( "href" );
+
+        if ( href === url ) {
+          $(this).addClass( "current" );
+        } else {
+          $(this).removeClass( "current" );
+        }
+      });
+
+      // You probably want to actually do something useful here..
+      
+      // Remove .bbq-current class from any previously "current" link(s).
+      $( 'a.bbq-current' ).removeClass( 'bbq-current' );
+      
+      // Hide any visible ajax content.
+      $( '.bbq-content' ).children( ':visible' ).hide();
+      
+      if ( TC.cache[ url ] ) {
+        // Since the element is already in the cache, it doesn't need to be
+        // created, so instead of creating it again, let's just show it!
+        $("article#content").html(TC.cache[ url ].html()).addClass("bbq-content");
+      } else {
+        // save the content to cache
+        TC.cache[ url ] = $("article#content").clone();
+      }
+      
+    });
+
+    // Since the event is only triggered when the hash changes, we need
+    // to trigger the event now, to handle the hash the page may have
+    // loaded with.
+    $(window).trigger( "hashchange" );    
   }
   
 })(jQuery);
