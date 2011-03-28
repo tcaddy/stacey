@@ -166,6 +166,9 @@ button {  width: auto; overflow: visible; }
  * Author:
  */
 
+.clear {
+  clear: both;
+}
 
 nav ul, nav li { margin: 0; }
 small { font-size: 85%; }
@@ -180,24 +183,29 @@ textarea { overflow: auto; }*/
 
 body, a { color: #222; }
 em, em a, strong, p.date, div#project-navigation p { color: #999; }
-a {
-  border-bottom: 1px solid #e2e2e2;
-  text-decoration: none;
-}
 
 /* Typography */
 
 html, body {
-  font-family: "Courier", monospace, serif;
-  font-size: 13px;
+  font-family: Tahoma,Helvetica,Arial,sans-serif;
+  font-size: 1.1em;
   line-height: 1.4;
   text-align: left;
   height: 100%;
 }
 
 ul li, p, em, .description {
-  font-size: 13px;
+  font-size: 0.8em;
   font-style: normal;
+}
+
+a, a:visited, a[data-remote=true] > span, a:visited[data-remote=true] > span {
+  text-decoration: none;
+  color: inherit;
+}
+a:hover, a:hover[data-remote=true] > span {
+  text-decoration: underline;
+  color: inherit;
 }
 
 h1 {
@@ -351,7 +359,8 @@ article .description h2 {
 
 article #asset {
   clear: both;
-  padding: 30px 0px 0px 80px;
+  /* padding: 30px 0px 0px 80px; */
+  padding: 10px;
 }
 
 article .media {
@@ -401,6 +410,28 @@ p#gallery-count span {
   margin: 0px 0px 1px;
 }
 
+div.previous_sibling, div.next_sibling {
+  font-size: 0.8em;
+  width: 49%
+}
+  
+div.previous_sibling {
+  float: left;
+  text-align: left;
+}
+
+div.next_sibling {
+  float: right;
+  text-align: right;
+}
+
+div.previous_sibling div.ordinal, div.next_sibling div.ordinal {
+  
+}
+
+div.previous_sibling div.name, div.next_sibling div.name {
+
+}
 
 .project-thumb {
   padding: 0px 10px 5px 0px;
