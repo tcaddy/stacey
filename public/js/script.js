@@ -11,7 +11,7 @@ var TC = TC || {}; // my initials; namespace for my js code
   $(function(){
     after_load_or_ajax();
     TC.setup_bbq();
-     TC.setup_gal();
+    //TC.setup_gal();
   });
   
   TC.setup_twitter = function() {
