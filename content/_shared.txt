@@ -9,3 +9,4 @@ twitter: TeddyCaddy
 -
 twitter_api_key: YOUR_API_KEY
 -
+gal_key: UA-22336496-1
