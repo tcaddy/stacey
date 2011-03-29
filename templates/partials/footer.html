@@ -18,7 +18,7 @@
 <script src="@root_path/public/js/libs/underscore-min.js"></script>
 <script type="text/javascript">var UnderScore = _.noConflict(); </script>
 <!-- scripts concatenated and minified via ant build script-->
-  <script src="@root_path/public/js/plugins.js"></script>
+  <script src="@root_path/public/js/plugins.js?v=@plugins_version"></script>
   <script type="text/javascript">
     var TC = TC || {}; // my initials; namespace for my js code
     TC.stacey = TC.stacey || {};
@@ -32,7 +32,7 @@
     };
   </script>
   <script src="http://platform.twitter.com/anywhere.js?id=@twitter_api_key&v=1" type="text/javascript"></script>
-  <script src="@root_path/public/js/script.js"></script>
+  <script src="@root_path/public/js/script.js?v=@script_version"></script>
 <!-- end concatenated and minified scripts-->
 
 <!--[if lt IE 7 ]>
