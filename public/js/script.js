@@ -34,14 +34,15 @@ var TC = TC || {}; // my initials; namespace for my js code
           $("#timeline .timestamp:last").prettyDate();
           T("#timeline td.status").hovercards();
         });
+        TC.fix_webkit_captions();
       }
     });
   }
-  
+
   function after_load_or_ajax() {
     TC.setup_ajax_on_links();
-    
     TC.setup_gallery();
+    TC.fix_webkit_captions();
     TC.hide_underlines_on_links();
     TC.hide_spinners();
     TC.setup_twitter();
@@ -127,11 +128,11 @@ var TC = TC || {}; // my initials; namespace for my js code
       e.stopImmediatePropagation();
       TC.add_spinner($(this));
       var data = {ajax:true};
-      var that = $(this);
       TC.cache = TC.cache || {};
       if ( ($(this).parent("div.pagination")) && ($(this).parent("div.pagination").attr('data-remove-dom-id')) ) {
         data.dom_id = $(this).parent("div.pagination").attr('data-remove-dom-id');
       }
+      var bbq_key = $.param.querystring($(this).attr("href"),data,0);
       $.ajax({
         cache: true,
         complete: after_load_or_ajax,
@@ -139,13 +140,13 @@ var TC = TC || {}; // my initials; namespace for my js code
         dataType: "html",
         success: function(data){
           $("article#content").html(data).addClass("bbq-content");
-          TC.cache[that.attr("href")] = $("article#content").clone();
+          TC.cache[bbq_key] = $("article#content").clone();
         },
         type: 'GET',
         url: $(this).attr('href')
       });
       
-      $.bbq.pushState({ url: $(this).attr('href') }); // Push this URL "state" onto the history hash.
+      $.bbq.pushState({ url: bbq_key }); // Push this URL "state" onto the history hash.
       return false;  
     });
   }
@@ -198,7 +199,20 @@ var TC = TC || {}; // my initials; namespace for my js code
     // Since the event is only triggered when the hash changes, we need
     // to trigger the event now, to handle the hash the page may have
     // loaded with.
-    $(window).trigger( "hashchange" );    
+    $(window).trigger( "hashchange" );
+  }
+
+  TC.fix_webkit_captions = function() {
+    if ($.browser.webkit) {
+      var off ;
+      var that;
+      $.each($("table:has(caption)"),function(i,item){
+        that = $("table:has(caption):eq("+i+")");
+        off = -2;
+        off += parseInt(that.css('border-right-width'),10);
+        that.children("caption").css({'margin-right':off+'px'});
+      });
+    }
   }
   
 })(jQuery);

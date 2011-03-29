@@ -125,7 +125,7 @@ Class Stacey {
   }
 
   function render($file_path, $template_file) {
-    $cache = new Cache($file_path, $template_file);
+    $cache = new Cache($file_path, $template_file, (preg_match('/text\/javascript/',$_SERVER['HTTP_ACCEPT']) ? '&ajax=true' : ''));
     # set any custom headers
     $this->set_content_type($template_file);
     # if etag is still fresh, return 304 and don't render anything
