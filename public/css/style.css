@@ -439,6 +439,23 @@ table.timeline > caption {
   font-weight: bold;
   white-space: nowrap;
 }
+.ie8 table.timeline > caption > span.text {
+  background-color: #444 !important;
+  color: #fff !important;
+  width: 100%;
+  height: 100%;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+.ie8 table.timeline > caption > span.busy {
+  background-color: #444 !important;
+  padding: 2px 4px !important;
+}
+
+.ie7 table.timeline > caption > span.text > a {
+  color: #fff !important;
+}
 table.timeline tr.status > td.status {
   line-height: 19px;
   word-wrap: break-word;
