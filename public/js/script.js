@@ -48,8 +48,22 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
           $("#timeline .timestamp:last").prettyDate();
           T("#timeline td.status").hovercards();
         });
+        TC.fix_webkit_captions();
       }
     });
+  }
+  
+  TC.fix_webkit_captions = function() {
+    if ($.browser.webkit) {
+      var off ;
+      var that;
+      $.each($("table:has(caption)"),function(i,item){
+        that = $("table:has(caption):eq("+i+")");
+        off = -2;
+        off += parseInt(that.css('border-right-width'),10);
+        that.children("caption").css({'margin-right':off+'px'});
+      });
+    }
   }
   
 })(jQuery);
