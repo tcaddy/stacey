@@ -105,6 +105,15 @@ jQuery.prettyDate = function(time){
   if (!(!!(date && date.getTimezoneOffset && date.setUTCFullYear))) { // copied for underscore.js isDate()
 	  date = new Date(time.replace(/-/g,"/").replace("T", " ").replace("Z", " +0000").replace(/(\d*\:\d*:\d*)\.\d*/g,"$1")) ;
 	}
+
+	// IE cannot parse created_at datetime string from Twitter JSON response
+  // Let's try to fix it:
+  // the fix comes from a @BRENEN's comment at: http://www.quietless.com/kitchen/format-twitter-created_at-date-with-javascript/
+  if (isNaN(date) || (!(!!(date && date.getTimezoneOffset && date.setUTCFullYear))) ) {
+    date = new Date(time.replace(/(\+\S+) (.*)/, '$2 $1'));
+  }
+  // end IE Twitter created_at fix
+
 	var diff = (((new Date()).getTime() - date.getTime()) / 1000),
 		day_diff = Math.floor(diff / 86400);
 
