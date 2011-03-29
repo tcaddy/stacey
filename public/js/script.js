@@ -118,7 +118,7 @@ var TC = TC || {}; // my initials; namespace for my js code
   }
 
   TC.hide_underlines_on_links = function() {
-    $.each($("a[data-remote='true'] > span[style*='text-decoration']"),function(i,item){
+    $.each($("a[data-remote='true'] > span[style*='text-decoration'], .ie8 a[data-remote='true'] > span, .ie7 a[data-remote='true'] > span"),function(i,item){
       $(this).css({'text-decoration':''});
     });
   }
