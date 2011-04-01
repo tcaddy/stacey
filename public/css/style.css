@@ -208,7 +208,7 @@ a:hover, a:hover[data-remote=true] > span {
   color: inherit;
 }
 
-ie7 a, .ie7 a:visited, .ie7 a[data-remote=true] > span, .ie7 a:visited[data-remote=true] > span {
+.ie7 a, .ie7 a:visited, .ie7 a[data-remote=true] > span, .ie7 a:visited[data-remote=true] > span {
   color: #444; /* inherit doesn't work for IE7 */
 }
 
