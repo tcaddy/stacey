@@ -182,6 +182,7 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
         // Since the element is already in the cache, it doesn't need to be
         // created, so instead of creating it again, let's just show it!
         $("article#content").html(TC.cache[ url ].html()).addClass("bbq-content");
+        after_load_or_ajax();
       } else {
         // save the content to cache
         TC.cache[ url ] = $("article#content").clone();
