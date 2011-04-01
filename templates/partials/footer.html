@@ -17,6 +17,8 @@
 <script src="@root_path/public/js/libs/jquery.ba-bbq.js"></script>
 <script src="@root_path/public/js/libs/underscore-min.js"></script>
 <script type="text/javascript">var UnderScore = _.noConflict(); </script>
+
+
 <!-- scripts concatenated and minified via ant build script-->
   <script src="@root_path/public/js/plugins.js"></script>
   <script type="text/javascript">
@@ -27,8 +29,10 @@
       handle: '@'+'@twitter',
       api_key: '@twitter_api_key'
     };
+    TC.stacey = {
+      'name': '@name'
+    };
   </script>
-  <script src="http://platform.twitter.com/anywhere.js?id=@twitter_api_key&v=1" type="text/javascript"></script>
   <script src="@root_path/public/js/script.js"></script>
 <!-- end concatenated and minified scripts-->
 
