@@ -51,7 +51,9 @@ var TC = TC || {}; // my initials; namespace for my js code
   TC.setup_gal = function() {
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', TC.gal.key]);
-    _gaq.push(['_setDomainName', '.teddycaddy.com']);
+    if (UnderScore.include(UnderScore.keys(TC.gal),'domain')) {
+      _gaq.push(['_setDomainName', TC.gal.domain]);
+    }
     _gaq.push(['_trackPageview']);
 
     (function() {

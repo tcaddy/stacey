@@ -30,6 +30,9 @@
     TC.gal = {
       key: '@gal_key'
     };
+if @gal_domain do
+    TC.gal.domain = '@gal_domain';
+endif 
   </script>
   <script src="http://platform.twitter.com/anywhere.js?id=@twitter_api_key&v=1" type="text/javascript"></script>
   <script src="@root_path/public/js/script.js?v=@script_version"></script>
@@ -43,7 +46,9 @@
   <script type="text/javascript">
     var _gaq = _gaq || [];
     _gaq.push(['_setAccount', '@gal_key']);
-    _gaq.push(['_setDomainName', '.teddycaddy.com']);
+    if (UnderScore.include(UnderScore.keys(TC.gal),'domain')) {
+      _gaq.push(['_setDomainName', TC.gal.domain]);
+    }
     _gaq.push(['_trackPageview']);
 
     (function() {

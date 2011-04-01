@@ -11,6 +11,8 @@ twitter_api_key: zqYlg5Vt0fFkZjZhtWpYtg
 -
 gal_key: UA-22336496-1
 -
+gal_domain: .teddycaddy.com
+-
 css_version: 1
 -
 plugins_version: 1
