@@ -2,6 +2,8 @@ page_description: A collection of @name's web development work
 -
 title: Home
 -
+tweetable: true
+-
 content:
 
 # Hello World!

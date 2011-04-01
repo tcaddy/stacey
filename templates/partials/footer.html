@@ -17,12 +17,15 @@
 <script src="@root_path/public/js/libs/jquery.ba-bbq.js"></script>
 <script src="@root_path/public/js/libs/underscore-min.js"></script>
 <script type="text/javascript">var UnderScore = _.noConflict(); </script>
+
+
 <!-- scripts concatenated and minified via ant build script-->
   <script src="@root_path/public/js/plugins.js?v=@plugins_version"></script>
   <script type="text/javascript">
     var TC = TC || {}; // my initials; namespace for my js code
     TC.stacey = TC.stacey || {};
     TC.stacey.root_path = '@root_path';
+    TC.stacey['name'] = '@name';
     TC.twitter = {
       handle: '@'+'@twitter',
       api_key: '@twitter_api_key'
