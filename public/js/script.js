@@ -24,6 +24,7 @@ var TC = TC || {}; // my initials; namespace for my js code
       T("#follow-placeholder").followButton(TC.twitter.handle);
       if($("#timeline").length>0) {
         T.User.find(TC.twitter.handle).timeline().each(function(status) {
+          $("table#timeline.caption_rounded_bottom").removeClass("caption_rounded_bottom");
           $("#timeline .busy:visible").hide();
           $("#timeline").append(
             Mustache.to_html(TC.twitter.status_simple_template, {
@@ -34,7 +35,7 @@ var TC = TC || {}; // my initials; namespace for my js code
           $("#timeline .timestamp:last").prettyDate();
           T("#timeline td.status").hovercards();
         });
-        TC.fix_webkit_captions();
+        UnderScore.delay(TC.fix_webkit_captions,500);
       }
     });
   }
@@ -191,6 +192,7 @@ var TC = TC || {}; // my initials; namespace for my js code
         // Since the element is already in the cache, it doesn't need to be
         // created, so instead of creating it again, let's just show it!
         $("article#content").html(TC.cache[ url ].html()).addClass("bbq-content");
+        after_load_or_ajax();
       } else {
         // save the content to cache
         TC.cache[ url ] = $("article#content").clone();
@@ -210,8 +212,8 @@ var TC = TC || {}; // my initials; namespace for my js code
       var that;
       $.each($("table:has(caption)"),function(i,item){
         that = $("table:has(caption):eq("+i+")");
-        off = -2;
-        off += parseInt(that.css('border-right-width'),10);
+        off = -1;
+        off -= parseInt(that.css('border-right-width'),10);
         that.children("caption").css({'margin-right':off+'px'});
       });
     }
