@@ -383,6 +383,28 @@ article .description div#images {
   padding: 0px 0px 0px 0px;
 }
 
+article .description .quote {
+  border: 1px solid;
+  margin-left: 50px;
+  margin-right: 50px;
+  padding: 10px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  background-color: #f5f5f5;
+  color: #222;
+  margin-top: 20px;
+}
+
+article .description .quote p {
+  font-family: times New Roman;
+  font-size: 1.5em;
+}
+
+article .description .quote .source {
+  
+}
+
 article #asset #image-wrapper {
   overflow: hidden;
   width: 551px;
@@ -506,8 +528,6 @@ table.timeline tr.status > td.status > span.timestamp {
   padding-left: 5px;
 }
 /* end Twitter @Anywhere styles */
-
-
 
 /**
  * Non-semantic helper classes: please define your styles before this section.
