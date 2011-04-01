@@ -67,8 +67,17 @@ s.parentNode.insertBefore(g,s)}(document,'script'));
           });
           UnderScore.delay(TC.fix_webkit_captions,500);
         }
-        T.hovercards();
+        if ($("#tweetbox").length>0) {
+          var that2 = $("#tweetbox");
+          T("#tweetbox").tweetBox({
+            counter: false,
+            defaultContent: TC.stacey['name']+(that2.attr('data-title') ? (' '+that2.attr('data-title')) : '')+": ",
+            label: "Share this page on Twitter"
+          });
+        }
         T("#follow-placeholder").followButton(TC.twitter.handle);
+        T('#hovercard-placeholder').hovercards({ expanded: true });
+        T(':not(#hovercard-placeholder)').hovercards();
       });
     } else {
       UnderScore.delay(TC.ensure_twitter_setup,100);
