@@ -5,12 +5,23 @@ if !@is_xhr do
   :navigation
   <article id="content" role="main" class="col seven">
 endif
-    <p class="date col one">@date</p>
+    <div class="row ">
+      if $siblings do
+        :next-page
+        :previous-page
+        <div class="clear" />
+      endif
+      
+    </div>
+    <p class="date row">Launched: @date</p>
     <div class="description col seven">
       <h2>@title</h2>
       @content
+      if @quote do
+        <div class="quote">@quote</div>
+      endif
     </div>
-    <p id="project-count" class="col one"><em>&#8470;</em> @index/@siblings_count</p>
+    
     <p id="gallery-count" class="col one">
       <em>&#8470;</em> <span>1/1</span>
     </p>
@@ -18,11 +29,6 @@ endif
       <p><a href="#" id="next-image">Next image</a> <em>&rarr;</em></p>
       <p><a href="#" id="previous-image">Previous image</a> <em>&larr;</em></p>
     </div> <!-- end #gallery-navigation -->
-    <div class="col four">
-      if $siblings do
-        :next-page
-        :previous-page
-      endif
-    </div>
+    
     :media
 :layout_bottom

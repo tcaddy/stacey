@@ -1,3 +1,10 @@
 foreach $previous_sibling do
-  <p><a href="@url" data-remote="true">Previous project</a>: &larr; @title</p>
+  <div class="previous_sibling">
+    <div class="ordinal">
+      &larr;  <a href="@url" data-remote="true">Previous project</a>
+    </div>
+    <div class="name">
+      <a href="@url" data-remote="true">@title</a>
+    </div>
+  </div>
 endforeach

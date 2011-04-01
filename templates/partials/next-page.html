@@ -1,3 +1,10 @@
 foreach $next_sibling do
-  <p><a href="@url" data-remote="true">Next project</a>: &rarr; @title</p>
+  <div class="next_sibling">
+    <div class="ordinal">
+      <a href="@url" data-remote="true">Next project</a> &rarr; 
+    </div>
+    <div class="name">
+      <a href="@url" data-remote="true">@title</a>
+    </div>
+  </div>
 endforeach
