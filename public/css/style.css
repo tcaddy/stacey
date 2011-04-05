@@ -422,9 +422,27 @@ p#gallery-count span {
 .js #media .image { display: none; }
 .js #media .image:first-child { display: block; }
 
+/* Twitter Web Intents styles */
+  /* 
+    Twitter bird logos from: http://dev.twitter.com/pages/image-resources 
+  
+    Choose best logo from:
+      url(../img/bird_16_black.png)
+      url(../img/bird_16_gray.png)
+      url(../img/bird_16_blue.png)
+  */
 
+ul.twitter_follow {
+  list-style-type: none;
+}
 
-
+ul.twitter_follow > li {
+  background-repeat: no-repeat;
+  background-position: 0px 0px;
+  padding-left: 18px;
+  background-image: url('../img/bird_16_blue.png');
+}
+/* end Twitter Web Intents styles */
 
 /**
  * Non-semantic helper classes: please define your styles before this section.
