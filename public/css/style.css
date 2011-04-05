@@ -432,11 +432,15 @@ p#gallery-count span {
       url(../img/bird_16_blue.png)
   */
 
-ul.twitter_follow {
+ul.twitter_follow, ul.tweetable {
   list-style-type: none;
 }
 
-ul.twitter_follow > li {
+ul.tweetable {
+  margin-left: 0px;
+}
+
+ul.twitter_follow > li, ul.tweetable > li {
   background-repeat: no-repeat;
   background-position: 0px 0px;
   padding-left: 18px;
