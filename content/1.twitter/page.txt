@@ -7,19 +7,19 @@ content:
     var opts = {
       version: 2,
       type: 'profile',
-      rpp: 4,
+      rpp: 10,
       interval: 6000,
       width: 'auto',
-      height: 300,
+      height: 'auto',
       theme: {
         shell: {
           background: '#333333',
           color: '#ffffff'
         },
         tweets: {
-          background: '#000000',
-          color: '#ffffff',
-          links: '#4aed05'
+          background: '#aeaeae',
+          color: '#444',
+          links: '#000'
         }
       },
       features: {
