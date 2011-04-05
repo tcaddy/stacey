@@ -4,3 +4,5 @@ profession: Gräphic Designer
 -
 email: 
 <hi@yourdomain.com>
+-
+twitter: StaceyApp
