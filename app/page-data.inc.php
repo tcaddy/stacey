@@ -142,6 +142,10 @@ Class PageData {
     $page->is_last = $page->data['@index'] == $page->data['@siblings_count'];
     # @is_first
     $page->is_first = $page->data['@index'] == 1;
+    
+    # @url_for_tweetable
+    # Twitter Web Intents needs URL-encoded URL.
+    $page->url_for_tweetable = urlencode('http://'.$page->data['@base_url'].'/'.$page->data['@permalink']);
 
 	# @cache_page
 	$page->bypass_cache = isset($page->data['@bypass_cache']) ? $page->data['@bypass_cache'] : false;
