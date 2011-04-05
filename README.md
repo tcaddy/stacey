@@ -27,13 +27,15 @@ See <http://staceyapp.com> and <http://html5boilerplate.com/> for more detailed 
 
 See a <a href="http://www.teddycaddy.com/stacey/twitter_intents/?/about/" target="_blank">Demo</a> of Twitter Web Intents integration.
 
-This uses Twitter Web Intents javascript widgets, which let's users interact with Twitter using small pop-up windows.
+This uses <a href="http://dev.twitter.com/pages/intents" target="_blank">Twitter Web Intents</a> javascript widgets, which let's users interact with Twitter using small pop-up windows.
 
 You should edit content/_shared.txt and change the Twitter account name.
 
 The left side navigation includes your Twitter username with Follow Me on Twitter integration.
 
 There is also a sample Twitter content folder which will get your recent Tweets.
+
+Finally, you can make any page Tweetable by setting @tweetable equal to true.  See content/index/index.txt and content/about/page.txt as examples.
 
 User's without Javascript will get degraded content that is probably 'good enough' to let them find you on Twitter.
 
